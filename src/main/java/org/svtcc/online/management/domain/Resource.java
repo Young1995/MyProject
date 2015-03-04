@@ -9,8 +9,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
@@ -37,8 +35,7 @@ public class Resource implements Serializable {
 	@Column(name = "resource_uri")
 	private String resourceURI;
 
-	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinTable(name = "svtcc_role_resource", joinColumns = { @JoinColumn(name = "resource_id") }, inverseJoinColumns = { @JoinColumn(name = "role_id") })
+	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "roleResources")
 	private List<Role> roles;
 
 	public int getId() {

@@ -10,7 +10,6 @@ import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import org.svtcc.online.management.constant.RoleConst;
 import org.svtcc.online.management.dao.UserDao;
 import org.svtcc.online.management.dao.util.PageSupport;
 import org.svtcc.online.management.domain.Role;
@@ -62,7 +61,6 @@ public class UserServiceImpl implements UserService {
 				user.setRoles(roles);
 			}
 
-			user.setType(RoleConst.valueOf(roleName).getValue());
 
 			// set the password
 			user.setSalt_value(System.currentTimeMillis() + "");
