@@ -60,10 +60,6 @@ public class User implements UserDetails {
 	@Column(name = "phoneNumber")
 	private String phoneNumber;
 
-	@OneToMany(mappedBy = "dean", cascade = { CascadeType.PERSIST,
-			CascadeType.REFRESH, CascadeType.MERGE }, fetch = FetchType.LAZY)
-	private List<Department> departments; // 用户所属学院
-
 	@Column(name = "department")
 	private Integer department;
 
@@ -92,11 +88,6 @@ public class User implements UserDetails {
 	@Column(name = "user_description")
 	private String description;
 
-	// 添加用户头像
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "user_profile_id")
-	private UserProfile userProfile;
-	
 	/**
 	 * 操作记录的时间和用户
 	 */
@@ -229,14 +220,6 @@ public class User implements UserDetails {
 		this.positionNo = positionNo;
 	}
 
-	public List<Department> getDepartments() {
-		return departments;
-	}
-
-	public void setDepartments(List<Department> departments) {
-		this.departments = departments;
-	}
-
 	public String getMajor() {
 		return major;
 	}
@@ -291,14 +274,6 @@ public class User implements UserDetails {
 
 	public void setDepartment(Integer department) {
 		this.department = department;
-	}
-
-	public UserProfile getUserProfile() {
-		return userProfile;
-	}
-
-	public void setUserProfile(UserProfile userProfile) {
-		this.userProfile = userProfile;
 	}
 
 	public void setRolesSample(String rolesSample) {
