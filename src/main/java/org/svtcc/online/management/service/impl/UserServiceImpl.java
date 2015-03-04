@@ -52,22 +52,21 @@ public class UserServiceImpl implements UserService {
 		return user;
 	}
 
-	public boolean registerUser(User user, String roleName) {
+	public boolean registerUser(User user, Integer id) {
 		try {
-			Role role = roleService.findRoleByRoleName(roleName);
+			Role role = roleService.findRoleById(id);
 			if (role != null) {
 				List<Role> roles = new ArrayList<Role>();
 				roles.add(role);
 				user.setRoles(roles);
 			}
 
-
 			// set the password
 			user.setSalt_value(System.currentTimeMillis() + "");
 			user.setPassword(passwordEncoder.encodePassword(user.getPassword(),
 					saltSource.getSalt(user)));
 			// 默认为false，需要等待审核
-			// user.setEnabled(true);
+			user.setEnabled(true);
 
 			userDao.saveOrUpdate(user);
 		} catch (Exception e) {

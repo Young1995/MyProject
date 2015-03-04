@@ -24,7 +24,7 @@ public class RoleServiceImpl implements RoleService {
 	 */
 	@Override
 	public void addRoles(Role role) {
-		roleDAO.saveAll(role);
+		roleDAO.saveOrUpdate(role);
 	}
 	
 	/* (non-Javadoc)
@@ -32,25 +32,25 @@ public class RoleServiceImpl implements RoleService {
 	 */
 	@Override
 	public List<Role> findAllRoles() {
-		return roleDAO.findAllRoles();
+		return roleDAO.findAll();
 	}
 	
 	public Role findRoleById(Integer id) {
-		return roleDAO.findRoleById(id);
+		return roleDAO.find(id);
 	}
 
 	@Override
 	public void updateRole(Role role) {
-		roleDAO.updateRole(role);
+		roleDAO.update(role);
 	}
 
 	@Override
 	public Role findRoleByRoleName(String roleName) {
-		return roleDAO.findRoleByName(roleName);
+		return roleDAO.findByProperty("roleName", roleName).get(0);
 	}
 
 	@Override
 	public void deleteRole(Integer id) {
-		roleDAO.deleteRole(id);
+		roleDAO.deleteById(id);
 	}
 }

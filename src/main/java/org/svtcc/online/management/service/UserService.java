@@ -15,7 +15,7 @@ public interface UserService extends UserDetailsService {
      * @param roleName
      * @return
      */
-    public boolean registerUser(User user, String roleName);
+    public boolean registerUser(User user, Integer id);
 
     public boolean isUserExist(String username);
 

@@ -24,50 +24,61 @@ import javax.persistence.Table;
 @Table(name = "svtcc_resource")
 public class Resource implements Serializable {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "id", unique = true, nullable = false)
-	private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id", unique = true, nullable = false)
+    private int id;
 
-	@Column(name = "resource_name")
-	private String resourceName;
+    @Column(name = "resource_name")
+    private String resourceName;
 
-	@Column(name = "resource_uri")
-	private String resourceURI;
+    @Column(name = "resource_uri")
+    private String resourceURI;
 
-	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "roleResources")
-	private List<Role> roles;
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "roleResources")
+    private List<Role> roles;
 
-	public int getId() {
-		return id;
-	}
+    @Column(name = "resource_type")
+    private Integer type; // 1. top, 2. side bar
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    public int getId() {
+        return id;
+    }
 
-	public String getResourceName() {
-		return resourceName;
-	}
+    public void setId(int id) {
+        this.id = id;
+    }
 
-	public void setResourceName(String resourceName) {
-		this.resourceName = resourceName;
-	}
+    public String getResourceName() {
+        return resourceName;
+    }
 
-	public String getResourceURI() {
-		return resourceURI;
-	}
+    public void setResourceName(String resourceName) {
+        this.resourceName = resourceName;
+    }
 
-	public void setResourceURI(String resourceURI) {
-		this.resourceURI = resourceURI;
-	}
+    public String getResourceURI() {
+        return resourceURI;
+    }
 
-	public List<Role> getRoles() {
-		return roles;
-	}
+    public void setResourceURI(String resourceURI) {
+        this.resourceURI = resourceURI;
+    }
 
-	public void setRoles(List<Role> roles) {
-		this.roles = roles;
-	}
+    public List<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
+    }
+
+    public Integer getType() {
+        return type;
+    }
+
+    public void setType(Integer type) {
+        this.type = type;
+    }
 
 }

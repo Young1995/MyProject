@@ -53,8 +53,8 @@
                 class="org.springframework.security.authentication.encoding.ShaPasswordEncoder">
     </beans:bean>
 
-    <beans:bean id="myAccessDecisionManager"
-                class="org.svtcc.online.management.security.MyAccessDecisionManager"></beans:bean>
+    <!--beans:bean id="myAccessDecisionManager"
+                class="org.svtcc.online.management.security.MyAccessDecisionManager"></beans:bean>  -->
 
     <!--beans:bean id="mySecurityMetadataSource"
                 class="org.svtcc.online.management.security.MyInvocationSecurityMetadataSourceService">
