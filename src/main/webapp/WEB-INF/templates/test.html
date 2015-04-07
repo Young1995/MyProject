@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Test Page</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <td>ID</td>
+            <td>Value</td>
+        </tr>
+        <tr th:each="data, index: ${data}">
+            <td th:text="${index.count}"></td>
+            <td th:text="${data}"></td>
+        </tr>
+    </table>
+</body>
+</html>
